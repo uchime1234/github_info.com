@@ -158,7 +158,7 @@ const [query, setQuery] = useState('')
  
             </div>
         </div> 
-
+hh
         <div className=" p-24 h-[300px]   ">
             <h2 className="text-center relative bottom-28 mt-4 text-3xl md:text-4xl font-bold mb-10 text-white glow-white">{sections[1]}</h2>
             <div className="flex flex-row  pt-2 absolute phones:top-[370px] top-[410px] left-0  h-[200px] mx-auto reall-div w-screen    gap-4">

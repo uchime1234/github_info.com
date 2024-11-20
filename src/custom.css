@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+body {
+  background: rgb(0, 0, 0);
+}
+.custom-div {
+  width: 433px;
+}
+
+form h1 {
+  font-family: "Poppins", serif;
+  filter: drop-shadow(0 0 20px rgb(14, 230, 14))
+  drop-shadow(0 0 20px rgb(14, 230, 14)); 
+}
+
+form .input-box {
+  position: relative;
+  width: 90%;
+  height: 50%;
+  margin: 30px 0;
+
+  border-bottom: 2px solid rgb(14, 230, 14);
+}
+
+form .remember-forgot{
+  justify-content: space-between;
+  font-size: 14.5px;
+margin: -15px 0 15px;
+filter: drop-shadow(0 0 20px rgb(14, 230, 14))
+drop-shadow(0 0 20px rgb(14, 230, 14)); 
+}
+
+.remember-forgot label input {
+  accent-color: rgb(14, 230, 14);
+ 
+  margin-right: 4px;
+}
+
+.remember-forgot a:hover {
+text-decoration: underline;
+}
+
+.input-box input {
+
+  width:93%;
+  position: relative;
+  right: 10px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  
+  filter: drop-shadow(0 0 20px rgb(14, 230, 14))
+  drop-shadow(0 0 20px rgb(14, 230, 14));  
+  font-size: 16px;
+  color: rgb(14, 230, 14);
+  padding: 2px 3px 0px 0px ;
+}
+
+.input-box input::placeholder {
+  color: rgb(14, 230, 14) ;
+}
+
+.input-box .fa-solid {
+position: absolute;
+right: 0px;
+top: 2px;
+color: rgb(14, 230, 14) ;
+filter: drop-shadow(0 0 20px rgb(14, 230, 14))
+  drop-shadow(0 0 20px rgb(14, 230, 14));  
+  
+}
+
+
+
+
+.nav-holder .fa-solid {
+  color: rgb(0, 0, 0);
+  filter: drop-shadow(0 0 20px rgb(14, 230, 14))
+    drop-shadow(0 0 20px rgb(14, 230, 14));
+    
+  }
+
+.custom-div h1 {
+  font-family: "Poppins", serif;
+  font-weight: 200;
+  font-size: 1.23em;
+  -webkit-text-stroke: 0.3vw rgb(0, 0, 0);
+  text-transform: uppercase;
+  position: relative;
+}
+
+.custom-div h1::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 350px;
+  height: 100%;
+  white-space: nowrap;
+  color: rgb(0, 243, 0);
+  -webkit-text-stroke: 0vw rgb(0, 0, 0);
+  border-right: 4px solid rgb(14, 230, 14);
+  overflow: hidden;
+  animation: animate 8s linear infinite;
+  filter: drop-shadow(0 0 20px rgb(14, 230, 14))
+    drop-shadow(0 0 20px rgb(14, 230, 14));
+}
+
+form button {
+  width: 90%;
+  height: 45px;
+border: none;
+filter: drop-shadow(0 0 7px rgb(14, 230, 14));
+cursor: pointer;
+font-family: "Poppins", serif;
+font-size: 20px;
+font-weight: 560;
+
+}
+
+
+@keyframes animate {
+  0%,
+  10%,
+  100% {
+    width: 0;
+  }
+
+  70%,
+  90% {
+    width: 45%;
+  }
+}
+
+@media (min-width: 670px) {
+  .custom-div h1 {
+    font-size: 1.5em;
+  }
+
+  @keyframes animate {
+    0%,
+    10%,
+    100% {
+      width: 0;
+    }
+
+    70%,
+    90% {
+      width: 54%;
+    }
+  }
+}
+
+@media (min-width: 770px) {
+  .custom-div h1 {
+    font-size: 1.8em;
+  }
+
+  @keyframes animate {
+    0%,
+    10%,
+    100% {
+      width: 0;
+    }
+
+    70%,
+    90% {
+      width: 65%;
+    }
+  }
+}
+
+@media (min-width: 795px) {
+  .custom-div h1 {
+    font-size: 2em;
+  }
+
+  @keyframes animate {
+    0%,
+    10%,
+    100% {
+      width: 0;
+    }
+
+    70%,
+    90% {
+      width: 73%;
+    }
+  }
+}
+
+.nav-holder {
+  background-color: rgb(0, 0, 0);
+  filter: drop-shadow(0 0 20px rgb(14, 230, 14));
+  background-color: rgb(0, 243, 0);
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-box {
+ 
+  height: 450px;
+  border: 5px solid rgb(0, 243, 0);
+  border-radius: 10px;
+  padding: 40px;
+}
+
+.form-holder {
+  align-items: center;
+  justify-content: center;
+}
+
+form .register-link {
+  font-size: 14.5px;
+  text-align: center;
+  margin: 20px 0 15px;
+  filter: drop-shadow(0 0 20px rgb(14, 230, 14));  
+
+}
+
+form .register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Base Style for Indicator */
+#screen-size-indicator {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+}
+
+/* Mobile View */
+@media (max-width: 599px) {
+  #screen-size-indicator::after {
+      content: "Mobile Screen: <600px";
+  }
+}
+
+/* Tablet View */
+@media (min-width: 600px) and (max-width: 1023px) {
+  #screen-size-indicator::after {
+      content: "Tablet Screen: 600px - 1023px";
+  }
+}
+
+/* Small Desktop View */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  #screen-size-indicator::after {
+      content: "Small Desktop: 1024px - 1439px";
+  }
+}
+
+/* Large Desktop View */
+@media (min-width: 1440px) {
+  #screen-size-indicator::after {
+      content: "Large Desktop: 1440px+";
+  }
+}
+
+.comfort-days {
+position: absolute;
+right: 0;
+top: 0;
+left:0;
+bottom: 0;
+background-color:rgba(24, 23, 23, 0.404) ;
+z-index: 10;
+backdrop-filter:blur(5px) ;
+}
+
+.lost-found {
+  background-color:black ;
+  z-index: 30; 
+}
+
+.showers-cone {
+  position: relative;
+  top: 100px;
+  color: rgb(0, 243, 0);
+  font-weight: 500;
+  font-size: larger;
+
+  filter: drop-shadow(0 0 20px rgb(14, 230, 14))
+  drop-shadow(0 0 20px rgb(14, 230, 14));
+
+}

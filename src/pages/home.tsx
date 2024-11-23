@@ -371,7 +371,7 @@ const filteredcards = Cards.filter((card) =>(
   {filteredcards.map((card) => (
 <Card 
      id= {card.id}
-      image= {card.image} 
+      image = {card.image} 
       name= {card.name} 
       age = {card.age} 
       role= {card.role} 

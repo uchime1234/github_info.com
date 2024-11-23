@@ -21,7 +21,7 @@
     white-space: nowrap;
     color: rgb(0, 243, 0);
     -webkit-text-stroke: 0vw rgb(0, 0, 0);
-    border-right: 4px solid rgb(14, 230, 14);
+    border-right: 4px solid  rgb(14, 230, 14) ;
     overflow: hidden;
     animation: animate 8s linear infinite;
     filter: drop-shadow(0 0 20px rgb(14, 230, 14))

@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-   primary: 'rgb(0, 243, 0)'
+   primary: 'rgb(0, 243, 0)',
+   prime: ' rgb(14, 230, 14)',
       },
 
       spacing: {

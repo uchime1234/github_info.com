@@ -27,7 +27,7 @@ const Gitbase: React.FC = () => {
   return (
     <div className={`min-h-screen text-gray-800 flex items-center justify-center ${showForm ? 'overflow-hidden' : ''}`}>
       {showForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-10">
+        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex items-center justify-center z-10">
           <div className="border-4 border-primary rounded-lg shadow-xl p-8 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex items-center border-b border-primary py-2">
@@ -42,63 +42,63 @@ const Gitbase: React.FC = () => {
                 />
               </div>
               <div className="flex items-center border-b border-primary py-2">
-                <Image className="text-gray-400 mr-2" />
+                <Image className="text-primary mr-2" />
                 <input
                   type="text"
                   name="image"
                   placeholder="Image URL"
                   required
-                  className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                  className="appearance-none bg-transparent border-none w-full text-primary mr-3 py-1 px-2 leading-tight focus:outline-none"
                   onChange={handleInputChange}
                 />
               </div>
-              <div className="flex items-center border-b border-gray-300 py-2">
-                <Calendar className="text-gray-400 mr-2" />
+              <div className="flex items-center border-b border-primary py-2">
+                <Calendar className="text-primary mr-2" />
                 <input
                   type="number"
                   name="age"
                   placeholder="Age"
                   required
-                  className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                  className="appearance-none bg-transparent border-none w-full text-primary mr-3 py-1 px-2 leading-tight focus:outline-none"
                   onChange={handleInputChange}
                 />
               </div>
-              <div className="flex items-center border-b border-gray-300 py-2">
-                <Briefcase className="text-gray-400 mr-2" />
+              <div className="flex items-center border-b border-primary py-2">
+                <Briefcase className="text-primary mr-2" />
                 <input
                   type="text"
                   name="role"
                   placeholder="Role"
                   required
-                  className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                  className="appearance-none bg-transparent border-none w-full text-primary mr-3 py-1 px-2 leading-tight focus:outline-none"
                   onChange={handleInputChange}
                 />
               </div>
-              <div className="flex items-center border-b border-gray-300 py-2">
-                <Flag className="text-gray-400 mr-2" />
+              <div className="flex items-center border-b border-primary py-2">
+                <Flag className="text-primary mr-2" />
                 <input
                   type="text"
                   name="country"
                   placeholder="Country"
                   required
-                  className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                  className="appearance-none bg-transparent border-none w-full text-primary mr-3 py-1 px-2 leading-tight focus:outline-none"
                   onChange={handleInputChange}
                 />
               </div>
-              <div className="flex items-center border-b border-gray-300 py-2">
-                <Github className="text-gray-400 mr-2" />
+              <div className="flex items-center border-b border-primary py-2">
+                <Github className="text-primary mr-2" />
                 <input
                   type="text"
                   name="githubUsername"
                   placeholder="GitHub Username"
                   required
-                  className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                  className="appearance-none bg-transparent border-none w-full text-primary mr-3 py-1 px-2 leading-tight focus:outline-none"
                   onChange={handleInputChange}
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-primary hover:bg-green-700 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300"
+                className="w-full bg-primary hover:bg-prime text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300"
               >
                 Submit
               </button>
@@ -119,11 +119,11 @@ const Gitbase: React.FC = () => {
             className="w-full h-full object-cover border-4 border-primary "
           />
         </motion.div>
-        <div className="space-y-4">
+        <div className="space-y-36">
           {[...Array(5)].map((_, index) => (
             <div
               key={index}
-              className="h-72 bg-primary rounded-lg  p-4 flex items-center justify-center"
+              className="h-96 bg-primary rounded-lg  p-4 flex items-center justify-center"
             >
               <p className="text-xl font-semibold text-black">Content {index + 1}</p>
             </div>

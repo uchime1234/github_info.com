@@ -124,7 +124,7 @@
   border-radius: 5px;
   justify-content: center;
   align-items: center;
-z-index: 500;
+z-index: 10;
 }    
 
 .nav-holderr .fa-solid {
@@ -217,7 +217,7 @@ bottom: 179px;
  }
 
  .showcase-div {
-  background-color: rgba(0, 0, 0, 0.267);
+  background-color: #00000044;
  z-index: 20;
  backdrop-filter: blur(3px);
 }

@@ -11,7 +11,7 @@ import Login from "./pages/Login";
 import Error from "./pages/Errorpage";
 import Register from "./pages/register";
 import HomePage from "./pages/home2";
-
+import Gitbase from "./pages/gitbase";
 
 const router = createBrowserRouter([
   {
@@ -25,9 +25,6 @@ const router = createBrowserRouter([
   },
 
 {
-
-
-
 
 path: "/register",
 element: <Register/>,
@@ -45,6 +42,12 @@ element: <Register/>,
     path: "*",
     element: <Error />,
   },
+
+{
+  path:"/gitbase",
+  element: <Gitbase/>
+},
+
 ]);
 
 export default function App() {

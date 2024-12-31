@@ -1,25 +1,55 @@
-import {useState} from 'react'
+import {ChangeEvent, FormEvent, useState} from 'react'
 import '../register.css'
+import axios from 'axios'
+
 
 
 const Register = () => {
 
    const [enablediv, enablar] = useState(false);
-
    const Showdiv = () => {
-      
-
        enablar(true);
-
-
    };
-
    const removediv = () => {
        enablar(false)
    }
    
 
+const [username, setusername] = useState(""); //intializing the input data, that will hold the data
+const [password, setpassword] = useState("");
+const [confirmpassword, setconfirmpassword] = useState("")
+const [email, setemail] = useState("");
+const [error, seterror] = useState("")
 
+const handlesubmit = async(e: React.FormEvent ) => {
+
+   e.preventDefault();
+
+   if(password !== confirmpassword) {
+      seterror('passwords do not match');
+      return;
+   }
+  
+   try{
+      const response = await axios.post('http://127.0.0.1:8000/register/', {
+         username,
+         email,
+         password
+      });
+      console.log(response.data)
+
+   } catch(err: any) {
+      console.log(err)
+      if(err.response && err.response.data.error) {
+       seterror(err.response.data.error)
+      } else {
+         seterror('an unexpected error occured')
+      }
+   }
+
+
+
+}
 
 
 
@@ -37,28 +67,35 @@ const Register = () => {
 <i className="fa-solid fa-bars "></i>
 </div>
 
+{error &&  <div className='text-red-700 relative top-16'>{error}</div>}
 
 <div className=" form-holder">
 a
 <div className="form-box w-settle login mx-auto relative top-20 desktop:w-increase desktopx:w-increasing  ">
 
-<form action="">
+<form onSubmit={handlesubmit} >
     <h1 className="text-center text-primary text-minor meds:text-meduim legs:text-bigg ">Register</h1>
+
  <div className="input-box relative top-2">
-    <input type="text" placeholder="Username" required />
+    <input type="text" name='username' value={username} onChange={ (e) => setusername(e.target.value)} placeholder="Username" required />
     <i className="fa-solid fa-user"></i>
  </div>
 
  <div className="input-box relative top-5">
-    <input type="text" placeholder="Email" required />
+    <input type="email" name='email' value={email} onChange={ (e) => setemail(e.target.value)} placeholder="Email" required />
     <i className="fa-solid fa-envelope"></i>
  </div>
 
  <div className="input-box relative top-8">
-    <input type="text" placeholder="Passworld" required />
+    <input type="password" name='password' value={password} onChange={ (e) => setpassword(e.target.value)} placeholder="Password" required />
     <i className="fa-solid fa-lock"></i>
  </div>
 
+
+ <div className="input-box relative top-8">
+    <input type="password" name='password2' value={confirmpassword} onChange={ (e) => setconfirmpassword(e.target.value)} placeholder="Password2" required />
+    <i className="fa-solid fa-lock"></i>
+ </div>
 
 
 
@@ -71,7 +108,7 @@ a
 <button className="text-slate-950 bg-primary relative top-7 right-4 " type="submit">submit</button>
 
 
-<div className="register-link text-primary relative top-7">
+<div className="register-link text-primary relative top-7 left-[100px]">
     <p>Already have an account ?</p> <a href="/login">Login</a>
 </div>
 
@@ -113,5 +150,6 @@ my portfolio.com
 
   )
 }
+
 
 export default Register

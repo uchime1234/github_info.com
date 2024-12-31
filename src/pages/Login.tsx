@@ -2,6 +2,8 @@ import { useState } from "react";
 import Lists from "../components/list";
 import Listing from "../components/props"
 import '../custom.css'
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 function Login() {
@@ -9,16 +11,45 @@ function Login() {
     const [enablediv, enablar] = useState(false);
 
     const Showdiv = () => {
-       
-
         enablar(true);
-
-
     };
 
     const removediv = () => {
         enablar(false)
     }
+
+    const [username, setusername] = useState(""); //this holds the variable for u to store username 
+    const [password, setpassword] = useState("");
+    const [message, setmessage] = useState("");
+    const [token, setToken] = useState<string | null>(null);
+    const navigate = useNavigate()
+
+
+    const handlelogin = async (e: React.FormEvent)=> {
+
+        e.preventDefault();
+
+
+        try {
+            const response = await axios.post("http://127.0.0.1:8000/login/", {
+                username,
+                password,
+            });
+            setToken(response.data.token) //show the token
+            setmessage("login successful")
+            setTimeout(() => {navigate("/")}, 2000)
+        } catch(err: any) {
+            
+            console.log(err)
+            if(err.response && err.response.data.error) {
+             setmessage(err.response.data.error)
+            } else {
+               setmessage('an unexpected error occured')
+            }
+         }
+
+    }
+
     
     return(
      
@@ -38,15 +69,19 @@ function Login() {
 a
 <div className="form-box w-settle login mx-auto relative top-20 desktop:w-increase desktopx:w-increasing  ">
 
-<form action="">
+<form action="" onSubmit={handlelogin}>
     <h1 className="text-center text-primary text-minor meds:text-meduim legs:text-bigg "> Login</h1>
- <div className="input-box relative top-2">
-    <input type="text" placeholder="Username" required />
+
+     {message && <div className="text-red-400">{message}</div>}
+     {token && <div className="text-red-400">{token}</div>}
+ <div className="input-box relative top-2">   
+    <input type="text" placeholder="Username" value={username} onChange={(e) => setusername(e.target.value)} required />
+
     <i className="fa-solid fa-user"></i>
  </div>
 
  <div className="input-box relative top-8">
-    <input type="text" placeholder="passworld" required />
+    <input type="text" placeholder="passworld" value={password} onChange={(e) => setpassword(e.target.value)} required />
     <i className="fa-solid fa-lock"></i>
  </div>
 
@@ -98,7 +133,7 @@ my portfolio.com
 
 
     )
-   
+
     
 }
 

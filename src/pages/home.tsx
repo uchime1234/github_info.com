@@ -370,7 +370,7 @@ const filteredcards = Cards.filter((card) =>(
     <div className=" h-56 w-screen relative mx-auto pl-2 right-6  top-64  zodiac-div  flex-row flex gap-4">
   {filteredcards.map((card) => (
 <Card 
-     id= {card.id}
+      id = {card.id}
       image = {card.image} 
       name= {card.name} 
       age = {card.age} 
@@ -385,7 +385,7 @@ const filteredcards = Cards.filter((card) =>(
 </div>
 }
 
-<div className=" flex flex-col relative top-36 gap-4  w-[90%] medss:w-[95%]  desktop:w-[98%] over-div">
+<div className=" flex flex-col relative top-36 gap-4  w-[90%] medss:w-[95%]  desktop:w-[98%]   over-div">
 <div className=" p-24 h-[300px] pr-10    ">
             <h2 className="text-center relative bottom-[120px] mt-4 text-3xl md:text-4xl font-bold mb-10 text-white glow-white ">{sections[0]}</h2>
             <div className=" flex-row  h-[200px]  pt-2 flex  absolute bottom-[210px] left-1 mx-auto real-div w-screen  gap-4">

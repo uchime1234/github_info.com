@@ -7,7 +7,7 @@ interface DeveloperInfo {
     role: string
     country: string
     link: string
-    image: string
+    image?: string
   }
   
 

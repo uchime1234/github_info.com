@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import myImage from "../assets/download.jfif"
 import "../pages/home2.css";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -15,11 +16,22 @@ const sections = [
 export default function HomePage() {
 
 
-
+  const navigate = useNavigate()
 
   const [activeSection, setActiveSection] = useState("hero");
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  
+  const take = () => {
+    setTimeout(() => {navigate("/gitbase")}, 2000)
+}
+ 
+
+const move = () => {
+  setTimeout(() => {navigate("/techfield")}, 2000)
+}
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -96,7 +108,7 @@ export default function HomePage() {
             <div className="max-w-4xl mx-auto">
              
               <div className="mt-10 text-center">
-                <div
+                <div onClick={take}
                     className="w-eighty h-32 rounded-round mx-auto  bg-primary shadow-lg shadow-primary/50 text-4xl transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-800/50 glow-green md:text-5xl pt-9 lg:text-6xl  font-bold mb-4 text-black"
                 >Form input</div>
               </div>
@@ -143,7 +155,7 @@ export default function HomePage() {
               ))}
             </div>
             <div className="text-center mt-10">
-              <button className="bg-primary text-black font-bold py-3 px-6 rounded-full text-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/50 glow-green">
+              <button onClick={move} className="bg-primary text-black font-bold py-3 px-6 rounded-full text-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/50 glow-green">
                 Tech Field
               </button>
             </div>
@@ -248,7 +260,7 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 glow-white text-center">
               Ready to showcase your GitHub work?
             </h2>
-            <button className="bg-primary text-black font-bold py-3 px-6 rounded-full text-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/50 glow-green">
+            <button onClick={move} className="bg-primary text-black font-bold py-3 px-6 rounded-full text-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/50 glow-green">
               Tech Field
             </button>
           </section>

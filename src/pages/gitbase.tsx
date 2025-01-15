@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { User, Image, Calendar, Briefcase, Flag, Github } from 'lucide-react';
 import axios from 'axios';
@@ -6,51 +6,81 @@ import axios from 'axios';
 const Gitbase: React.FC = () => {
 
 interface gitinfo {
-  name: string;
+  username: string;
   bio: string;
-  public_repo: string;
+  public_repos: string;
   avatar_url: string;
   html_url: string;
+  location: string,
+  followers: string,
+  following: string,
+  created_at: string,
+  updated_at: string,
+  twitter_username: string,
 
 }
 
+const [names, setnames] = useState('');
+const [Cards, setCards] = useState<Card[]>([]);
 const [username, setusername] = useState("")
 const [message, setmessage] = useState("")
-const [name, setname] = useState("")
-const [image, setimage] = useState("")
+const [image, setimage] = useState<File | null>(null)
 const [age, setage] = useState("")
 const [role, setrole] = useState("")
 const [country, setcountry] = useState("")
+const [showForm, setShowForm] = useState(true);
+const [gitinfo, setgitinfo] = useState<gitinfo | null> (null);
 
-  const [showForm, setShowForm] = useState(true);
+
+interface Card {
+  id: number
+  name: string
+  age: string
+  role: string
+  country: string
+  link: string
   
-  const [gitinfo, setgitinfo] = useState<gitinfo | null> (null);
+}
 
 
-
+    
 const fetching = async (e: React.FormEvent) => {
+  
   e.preventDefault();
   setShowForm(false);
 
-try {
-  setmessage('')
-  const response = await axios.get('http://127.0.0.1:8000/github/', {
-    params: {username}
-  });
-  setgitinfo(response.data);
+ const payload = {
+  names: names,
+  username: username,
+  role: role,
+  age: age,
+  country: country,
+  
 
-} catch(err: any){
+ }
 
-  console.log(err)
-  if(err.response && err.response.data.error) {
-   setmessage(err.response.data.error)
-  } else {
-     setmessage('an unexpected error occured')
-  }
+  try {
+    setmessage('')
+    const response = await axios.post('http://127.0.0.1:8000/github-user/ ', payload, { 
 
-
-
-}} 
+    headers: { 'Content-Type': 'application/json', },    
+    });
+    setgitinfo(response.data);
+    
+  
+  
+  } catch(err: any){
+    console.log(err)
+    if(err.response && err.response.data.error) {
+     setmessage(err.response.data.error)
+    } else {
+       setmessage('an unexpected error occured')
+    }
+  
+  
+  
+  }} 
+  
 
   return (
     <div className={`min-h-screen text-gray-800 flex items-center justify-center ${showForm ? 'overflow-hidden' : ''}`}>
@@ -67,20 +97,24 @@ try {
                   placeholder="Name"
                   required
                   className="appearance-none bg-transparent border-none w-full text-primary mr-3 py-1 px-2 leading-tight focus:outline-none"
-                  value={name}
-                  onChange={(e) => setname( e.target.value)}
+                  value={names}
+                  onChange={(e) => setnames( e.target.value)}
+                  
+                
                 />
               </div>
               <div className="flex items-center border-b border-primary py-2">
                 <Image className="text-primary mr-2" />
                 <input
-                  type="text"
+                  type="file"
                   name="image"
                   placeholder="Image URL"
                   required
                   className="appearance-none bg-transparent border-none w-full text-primary mr-3 py-1 px-2 leading-tight focus:outline-none"
-                  value={image}
-                  onChange={(e) => setimage( e.target.value)}
+                  onChange={(e) =>{
+                    if (e.target.files && e.target.files[0]) { setimage( e.target.files[0])}
+                    }}
+                  accept='image/*'
                 
                 />
               </div>
@@ -99,16 +133,15 @@ try {
               </div>
               <div className="flex items-center border-b border-primary py-2">
                 <Briefcase className="text-primary mr-2" />
-                <input
-                  type="text"
-                  name="role"
-                  placeholder="Role"
-                  required
-                  className="appearance-none bg-transparent border-none w-full text-primary mr-3 py-1 px-2 leading-tight focus:outline-none"
-                  value={role}
-                  onChange={(e) => setrole( e.target.value)}
-                
-                />
+                <select name="role"  onChange={(e) => setrole( e.target.value)}  required>
+                <option value="Software Engineering">Software Engineering</option>
+                <option value="Machine Learning">Machine Learning</option>
+                <option value="Data Science">Data Science</option>
+                <option value="DevOps">DevOps</option>
+                <option value="Cloud Engineering">Cloud Engineering</option>
+                <option value="web designers">web designers</option>
+      </select>
+
               </div>
               <div className="flex items-center border-b border-primary py-2">
                 <Flag className="text-primary mr-2" />
@@ -155,24 +188,39 @@ try {
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
         >
           <img
-            src="/placeholder.svg?height=256&width=256"
-            alt="Profile"
+            src={image ? URL.createObjectURL(image) : ""}
+            alt="Preview"
             className="w-full h-full object-cover border-4 border-primary "
           />
         </motion.div>
         <div className="space-y-36">
           {gitinfo && (
          <div className="space-y-36" >
-  <div className="h-96 bg-primary rounded-lg  p-4 flex items-center justify-center"><p className="text-xl font-semibold text-black">{gitinfo.name}</p></div>       
-  <div className="h-96 bg-primary rounded-lg  p-4 flex items-center justify-center"><p className="text-xl font-semibold text-black">{gitinfo.bio}</p></div>
-  <div className="h-96 bg-primary rounded-lg  p-4 flex items-center justify-center"><p className="text-xl font-semibold text-black">{gitinfo.public_repo}</p></div>
-  <div className="h-96 bg-primary rounded-lg  p-4 flex items-center justify-center"><p className="text-xl font-semibold text-black">{gitinfo.html_url}</p></div>                     
-  <div className="h-96 bg-primary rounded-lg  p-4 flex items-center justify-center"><p className="text-xl font-semibold text-black">{gitinfo.avatar_url}</p></div>                     
-         </div>
+   <div className="h-96 bg-primary rounded-lg  p-4 flex items-center justify-center"><p className="text-xl font-semibold text-black">
+   username: {gitinfo.username}
+    <br />
+   user bio:{gitinfo.bio}
+   <br />
+   users public_url:{gitinfo.public_repos}
+   <br />
+   user avartar_url: {gitinfo.avatar_url}
+   <br />
+   user location: {gitinfo.location}
+   <br />
+   users followers: {gitinfo.followers}
+   <br />
+   user created_at: {gitinfo.created_at}
+   <br />
+   user updated_at: {gitinfo.updated_at}
+   <br />
+   user twitter_username: {gitinfo.twitter_username}
+   <br />
+   </p></div>       
+    </div>
 
           )}
        
-             
+      
             </div>
         
         </div>

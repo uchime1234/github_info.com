@@ -1,18 +1,19 @@
 import Navbar from "../components/navbar";
 import Loading from "../components/loadingdiv";
 import Alert from "../components/alert";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import '../home.css'
 import Card from "../components/cards";
-
 import { Search } from 'lucide-react'
 import {FileText} from 'lucide-react'
+
+import axios from "axios";
 
 
 const sections = [
   "Software Developers",
   "Web Designers",
-  "Mobile App Developers",
+  "Mobile Aj.pop Developers",
   "DevOps enginers",
   "Data Scientist",
   "Machine Learners",
@@ -20,6 +21,24 @@ const sections = [
  "How to showcase ur own github projects "
 ]
 
+  
+  
+    
+  
+  
+
+
+
+
+interface Cards {
+    id: number
+    name: string
+    age: string
+    role: string
+    country: string
+    link: string
+    image?: string
+}
 
 
 
@@ -44,8 +63,10 @@ const [query, setQuery] = useState('')
     // Implement your search logic here
     console.log('Searching for:', filteredcards)
   }
+ 
+ 
 
-const [Cards, setcards] = useState([
+const [Cards, setcards] = useState<Cards[]>([
 {id: 1,
 image:"/image-one.jfif", 
 name: "John Doe", 
@@ -71,13 +92,13 @@ country: "USA",
 link: "https://example.com/john-doe", },
 
 {
-                            id: 4,
-                            image: "image-four.jfif", 
-                            name: "lusion stones", 
-                            age: '25', 
-                            role: "Software Engineer", 
-                            country: "England", 
-                            link: "https://example.com/john-doe" 
+id: 4,
+image: "image-four.jfif", 
+name: "lusion stones", 
+age: '25', 
+role: "Software Engineer", 
+country: "England", 
+link: "https://example.com/john-doe" 
 },
 
 
@@ -250,7 +271,7 @@ link: "https://example.com/john-doe",
 
 {
     id: 22,
-    imag: "image-31.jfif", 
+    image: "image-31.jfif", 
     name: "Kenith navas", 
     age: '32', 
     role: "Data scientist", 
@@ -321,12 +342,19 @@ link: "https://example.com/john-doe",
 
 
 ])
-  
 
-const filteredcards = Cards.filter((card) =>(
+
+
+const filteredcards = Cards.filter((card) =>( // used to filter for the search bar 
     card.name.toLowerCase().includes(query.toLowerCase())
 ))
 
+
+
+
+    
+  
+    
 
     return ( 
     
@@ -385,7 +413,7 @@ const filteredcards = Cards.filter((card) =>(
 </div>
 }
 
-<div className=" flex flex-col relative top-36 gap-4  w-[90%] medss:w-[95%]  desktop:w-[98%]   over-div">
+<div className=" flex flex-col relative top-36 gap-4  w-[90%] medss:w-[95%]  desktop:w-[98%] over-div">
 <div className=" p-24 h-[300px] pr-10    ">
             <h2 className="text-center relative bottom-[120px] mt-4 text-3xl md:text-4xl font-bold mb-10 text-white glow-white ">{sections[0]}</h2>
             <div className=" flex-row  h-[200px]  pt-2 flex  absolute bottom-[210px] left-1 mx-auto real-div w-screen  gap-4">
@@ -433,7 +461,7 @@ const filteredcards = Cards.filter((card) =>(
                             country="England" 
                             link="https://example.com/john-doe" 
                         />               
-
+  
  
             </div>
         </div> 
@@ -485,7 +513,7 @@ const filteredcards = Cards.filter((card) =>(
                         />               
 
 
-
+         
             </div>
         </div> 
 
@@ -533,7 +561,7 @@ const filteredcards = Cards.filter((card) =>(
                             country="USA" 
                             link="https://example.com/john-doe" 
                         />               
-
+       
             </div>
         </div>
 
@@ -581,7 +609,7 @@ const filteredcards = Cards.filter((card) =>(
                             country="Cananda" 
                             link="https://example.com/john-doe" 
                         />               
-
+     
             </div>
         </div>
 
@@ -629,7 +657,7 @@ const filteredcards = Cards.filter((card) =>(
                             country="USA" 
                             link="https://example.com/john-doe" 
                         />               
-
+   
             </div>
         </div>
 
@@ -677,7 +705,7 @@ const filteredcards = Cards.filter((card) =>(
                             country="USA" 
                             link="https://example.com/john-doe" 
                         />               
-
+             
             </div>
         </div> 
 
@@ -724,8 +752,9 @@ const filteredcards = Cards.filter((card) =>(
                             role="Cyber analyst" 
                             country="USA" 
                             link="https://example.com/john-doe" 
-                        />               
-
+                        />     
+    
+    
             </div>
         </div>
 

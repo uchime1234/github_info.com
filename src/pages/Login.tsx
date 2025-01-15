@@ -37,7 +37,7 @@ function Login() {
             });
             setToken(response.data.token) //show the token
             setmessage("login successful")
-            setTimeout(() => {navigate("/")}, 2000)
+           setTimeout(() => {navigate("/")}, 2000)
         } catch(err: any) {
             
             console.log(err)

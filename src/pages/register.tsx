@@ -1,7 +1,7 @@
 import {ChangeEvent, FormEvent, useState} from 'react'
 import '../register.css'
 import axios from 'axios'
-
+import { useNavigate } from "react-router-dom";
 
 
 const Register = () => {
@@ -20,6 +20,8 @@ const [password, setpassword] = useState("");
 const [confirmpassword, setconfirmpassword] = useState("")
 const [email, setemail] = useState("");
 const [error, seterror] = useState("")
+const navigate = useNavigate()
+
 
 const handlesubmit = async(e: React.FormEvent ) => {
 
@@ -37,7 +39,8 @@ const handlesubmit = async(e: React.FormEvent ) => {
          password
       });
       console.log(response.data)
-
+      setTimeout(() => {navigate("/login")}, 2000)
+      seterror('logged in successfuly')
    } catch(err: any) {
       console.log(err)
       if(err.response && err.response.data.error) {
